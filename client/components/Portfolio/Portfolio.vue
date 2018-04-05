@@ -5,9 +5,9 @@
     .trusty_inline_buttons._mob._one_button(
       @click="goToManagePortfolio" 
       v-show="!minMode && totalBaseValue"
-      :class="{'_disabled': !subscribedToMarket}")
-      button(v-show="subscribedToMarket") MANAGE FUND
-      button(v-show="!subscribedToMarket")
+      :class="{'_disabled': !isSubscribed}")
+      button(v-show="isSubscribed") MANAGE FUND
+      button(v-show="!isSubscribed")
         Spinner(size="small", :absolute="false")
         div LOADING MARKET...
 
@@ -72,7 +72,7 @@ export default {
       getAssetMultiplier: 'market2/getAssetMultiplier',
       assets: 'assets/getAssets',
       defaultAssetsIds: 'assets/getDefaultAssetsIds',
-      subscribedToMarket: 'market/isSubscribed'
+      isSubscribed: 'market2/isSubscribed'
     }),
     combinedBalances() {
       const combinedBalances = { ...this.balances };
@@ -126,7 +126,7 @@ export default {
   },
   methods: {
     goToManagePortfolio() {
-      if (!this.subscribedToMarket) return;
+      if (!this.isSubscribed) return;
       this.$router.push({ name: 'manage' });
     }
   }
