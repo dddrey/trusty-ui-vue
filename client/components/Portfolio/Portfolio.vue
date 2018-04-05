@@ -1,5 +1,7 @@
 <template lang="pug">
   div.portfolio-container
+     
+
     .trusty_inline_buttons._mob._one_button(
       @click="goToManagePortfolio" 
       v-show="!minMode && totalBaseValue"
@@ -65,10 +67,9 @@ export default {
   },
   computed: {
     ...mapGetters({
-      history: 'market/getMarketHistory',
-      marketFetching: 'market/isFetching',
-      marketError: 'market/isError',
-      getAssetMultiplier: 'market/getAssetMultiplier',
+      history: 'market2/getMarketHistory',
+      marketError: 'market2/isError',
+      getAssetMultiplier: 'market2/getAssetMultiplier',
       assets: 'assets/getAssets',
       defaultAssetsIds: 'assets/getDefaultAssetsIds',
       subscribedToMarket: 'market/isSubscribed'
@@ -88,7 +89,7 @@ export default {
       assetsIds.forEach(id => {
         const { balance } = this.combinedBalances[id];
         const asset = this.assets[id];
-        let prices = this.history[id];
+        let prices = this.history(this.baseId)[id];
         if (!prices) return;
         const multiplier = this.fiatMultiplier;
         if (id === this.baseId) prices = { first: 1, last: 1 };

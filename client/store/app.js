@@ -42,7 +42,7 @@ const actions = {
       assets: combinedAssetsIds
     }, { root: true });
 
-    store.dispatch('market/fetchMarketHistory', {
+    store.dispatch('market2/fetchAssetsHistory', {
       baseId: '1.3.0',
       assetsIds: combinedAssetsIds,
       days: 1
