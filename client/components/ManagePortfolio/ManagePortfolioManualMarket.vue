@@ -1,5 +1,5 @@
 <template lang="pug">
-.manual_trading_market | MARKET {{ getAssetById(market).symbol }}
+.manual_trading_market
   template(v-for="asset in assetsList")
     div(@click="goToMarketAsset(asset)") {{ getAssetById(asset).symbol }}
 </template>
@@ -39,3 +39,14 @@ export default {
   }
 };
 </script>
+
+<style>
+.manual_trading_market {
+  display: grid;
+  grid-template-rows: 50vw 50vw 50vw 50vw 50vw;
+  grid-template-columns: 50vw 50vw;
+  justify-items: center;
+  align-items: center;
+  color: white;
+}
+</style>

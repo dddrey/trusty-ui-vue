@@ -24,3 +24,14 @@ export default {
   }
 };
 </script>
+
+<style>
+.manual_trading_markets {
+  display: grid;
+  grid-template-rows: 50vw 50vw;
+  grid-template-columns: 50vw 50vw;
+  justify-items: center;
+  align-items: center;
+  color: white;
+}
+</style>
